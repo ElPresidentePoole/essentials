@@ -33,6 +33,18 @@ void test_e_lists() {
 
 	e_arraylist_free(al);
 }
+
+void test_e_foreach() {
+	void print_value(void* v) {
+		printf("%d\n", *(int*)v);
+	}
+
+	int numbers[] = e_new(int[5]);
+	unsigned int len = sizeof(numbers) / sizeof(int);
+	e_foreach(numbers, len, (&print_value));
+	free(numbers);
+}
+
 int main(void) {
 	test_e_new();
 	test_e_lists();
